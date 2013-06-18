@@ -72,8 +72,10 @@ function ssb_output()
 		$output.="<li><div class=\"g-plusone\" data-size=\"medium\" data-href=\"".get_permalink()."\"></div><script type=\"text/javascript\">(function(){var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script></li>";
 	$output.="</ul>>";
 
-if($ssb2!=1){if($output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&s=".home_url()"\" />";
-		update_option("ssb_installed", 1);}else{}}
+
+if($ssb2!=1){ $a = home_url();
+	$output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&s=".$a."\" />";
+		update_option("ssb_installed", 1);}
 
 	return $output;
 }
