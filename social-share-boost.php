@@ -74,7 +74,7 @@ function ssb_output()
 
 $ssb2 = get_option(ssb_installed);
 if($ssb2!=1){echo $ssb2; $a = home_url();
-	$output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&s=".$a."\" />";
+	$output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&s=".$a."\" ></iframe>";
 		update_option("ssb_installed", 1);
 		$ssb2 = get_option(ssb_installed);
 	}
