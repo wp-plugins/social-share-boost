@@ -14,9 +14,10 @@ Shows social sharing buttons in post excerpts, post content, pages and via short
 
 Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode or a widget. Expected to support more sharing options and more customizable widget in coming versions.
 
-= Now Also Supports=
+= Now Also Supports =
 * Widget
 * Shortcode
+
 = Current Buttons =
 
 * Facebook
