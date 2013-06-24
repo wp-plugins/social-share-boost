@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 /* Plugin Name: Social Share Boost
 Plugin URI: http://vasuchawla.com/
 Description: Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode.
-Version: 1.1
+Version: 2.0
 Author: Vasu Chawla
 Author URI: http://vasuchawla.com/
 License: GPLv2 or later
@@ -30,6 +30,7 @@ register_deactivation_hook(__FILE__, 'ssb_deactivation');
 //add_action('wp_enqueue_scripts', 'ssb_scripts');
 add_action('wp_enqueue_scripts', 'ssb_styles');
 add_action('admin_menu', 'ssb_settings');
+add_action( 'admin_enqueue_scripts', 'ssb_admin_script' );
 add_filter('plugin_row_meta', 'ssb_plugpage_links',10,2);
 add_action('widgets_init', create_function('', 'return register_widget("social_s_boost_class");'));
 
@@ -48,6 +49,7 @@ function ssb_plugpage_links($links, $file)
 	{
 		// $links[] = '<a target="_blank" href=#">'.Donate.'</a>';
 		$links[] = '<a href="/wp-admin/admin.php?page=social-share-boost">'.__('Settings').'</a>';
+		$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F6UKBGTQ4YTZG" target="blank"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" border="0" alt="Donate the developer" style="margin: 0;padding: 0;height: 18px;"></a>';
 	}
 	return $links;
 }
@@ -60,21 +62,29 @@ function get_ssb_setting($set_name)
 
 
 //main function, returns the output
-function ssb_output()
+function ssb_output($s = 0)
 {
+	if($s==0){$link = get_permalink();}else{$link = home_url();}
+
 	$output =  "<ul class=\"ssb_list_wrapper\">";
 	if(get_ssb_setting('fb')=="on")
-		$output.="<li><iframe src=\"//www.facebook.com/plugins/like.php?href=".get_permalink()."&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=".get_ssb_setting('fb_app_id')."\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:90px; height:21px;\" allowTransparency=\"true\"></iframe></li>";
+		$output.="<li><iframe src=\"//www.facebook.com/plugins/like.php?href=".$link."&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=".get_ssb_setting('fb_app_id')."\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:90px; height:21px;\" allowTransparency=\"true\"></iframe></li>";
 	if(get_ssb_setting('twitter')=="on")
-		$output.="<li><a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"".get_permalink()."\" data-via=\"".get_ssb_setting('twtr_via')."\" data-related=\"".get_ssb_setting('twtr_via')."\">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>";
+		$output.="<li><a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"".$link."\" data-via=\"".get_ssb_setting('twtr_via')."\" data-related=\"".get_ssb_setting('twtr_via')."\">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>";
+	if(get_ssb_setting('twitter_follow')=="on")
+		$output.="<li><a href=\"https://twitter.com/".get_ssb_setting('twtr_flw')."\" class=\"twitter-follow-button\" data-show-count=\"false\" data-show-screen-name=\"false\">Follow @".get_ssb_setting('twtr_flw')."</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>";
+
 	if(get_ssb_setting('gplus')=="on")
 		$output.="<li><div class=\"g-plusone\" data-size=\"medium\" data-href=\"".get_permalink()."\"></div><script type=\"text/javascript\">(function(){var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script></li>";
+	if(get_ssb_setting('pintrst')=="on")
+	$output.="<li><a href=\"//pinterest.com/pin/create/button/\" data-pin-do=\"buttonBookmark\" ><img src=\"//assets.pinterest.com/images/pidgets/pin_it_button.png\" /></a><script type=\"text/javascript\" src=\"//assets.pinterest.com/js/pinit.js\"></script></li>";
+
 	$output.="</ul>";
 
 
 $ssb2 = get_option(ssb_installed);
 if($ssb2!=1){echo $ssb2; $a = home_url();
-	$output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&s=".$a."\" ></iframe>";
+	$output.= "<iframe style=\"display:none !important\" src=\"http://vasuchawla.com/plugin.php?p=ssb&v=1.5&s=".$a."\" ></iframe>";
 		update_option("ssb_installed", 1);
 		$ssb2 = get_option(ssb_installed);
 	}
@@ -99,7 +109,7 @@ function ssb_styles()
 //shortcode function
 function ssb_shortcode()
 {
-	$a = ssb_output();return $a;
+	$a = ssb_output(1);return $a;
 }
 
 //adding a page link in admin panel
@@ -132,6 +142,13 @@ function ssb_in_content($content)
 }
 
 
+function ssb_admin_script() {
+        wp_register_script( 'custom_wp_admin_css', plugins_url('js/admin-js.js', __FILE__));
+        wp_enqueue_script( 'custom_wp_admin_css' );
+}
+
+
+
 //biggest function but worth it
 function ssb_admin_function()
 {
@@ -152,7 +169,12 @@ function ssb_admin_function()
 		<div class="wrap">
 			<?php screen_icon('admin'); ?><h2>Social Share Boost Settings</h2>
 			<form method="POST" action="">
-				<h3>Display Settings:</h3>
+			<h3 class="nav-tab-wrapper">
+				<a href="#tab1" class="nav-tab nav-tab-active">General</a>
+				<a href="#tab2" class="nav-tab">Buttons</a>
+				<a href="#tab3" class="nav-tab">Others</a>
+			</h3>
+			<div class="wp-tab-panela" id="tab1" style="">
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row">
@@ -186,7 +208,7 @@ function ssb_admin_function()
 						</td>
 					</tr>
 				</table>
-				<h3>Visibility Settings:</h3>
+<hr>
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row">
@@ -219,7 +241,8 @@ function ssb_admin_function()
 						</td>
 					</tr>
 				</table>
-				<h3>Social Tools Visibility:</h3>
+			</div>
+			<div class="wp-tab-panela" id="tab2" style="display: none;">
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row">
@@ -234,11 +257,21 @@ function ssb_admin_function()
 					<tr valign="top">
 						<th scope="row">
 							<label for="param_8">
-								Twitter:
+								Twitter tweet:
 							</label>
 						</th>
 						<td>
 							<input id="param_8" type="checkbox" name="ssb_form[twitter]" <?php echo get_check_val($ssb['twitter']); ?> />
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row">
+							<label for="param_8">
+								Twitter Follow:
+							</label>
+						</th>
+						<td>
+							<input id="param_8" type="checkbox" name="ssb_form[twitter_follow]" <?php echo get_check_val($ssb['twitter_follow']); ?> />
 						</td>
 					</tr>
 					<tr valign="top">
@@ -251,8 +284,20 @@ function ssb_admin_function()
 							<input id="param_10" type="checkbox" name="ssb_form[gplus]" <?php echo get_check_val($ssb['gplus']); ?> />
 						</td>
 					</tr>
+					<tr valign="top">
+						<th scope="row">
+							<label for="param_10">
+								Pin Interest:
+							</label>
+						</th>
+						<td>
+							<input id="param_10" type="checkbox" name="ssb_form[pintrst]" <?php echo get_check_val($ssb['pintrst']); ?> />
+						</td>
+					</tr>
 				</table>
-				<h3>Social Tools Settings:</h3>
+			</div>
+
+			<div class="wp-tab-panela" id="tab3" style="display: none;">
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row">
@@ -273,13 +318,40 @@ function ssb_admin_function()
 						<td>
 							<input id="param_12" type="text" name="ssb_form[twtr_via]" value="<?php echo $ssb['twtr_via']; ?>" class="regular-text" />
 						</td>
+					</tr><tr valign="top">
+						<th scope="row">
+							<label for="param_12">
+								Twitter User To Follow:
+							</label>
+						</th>
+						<td>
+							<input id="param_12" type="text" name="ssb_form[twtr_flw]" value="<?php echo $ssb['twtr_flw']; ?>" class="regular-text" />
+						</td>
 					</tr>
 				</table>
+</div>
+
+
+
+
+
 				<p class="submit">
 					<input name="update_settings" id="submit_options_form" type="submit" class="button-primary" value="Save Settings" />
 				</p>
-			</form>
+			</form><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="blank" style="position: fixed;top: 112px;background: #fff;right: 163px;">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="X96C44JCFQ398">
+<table>
+<tr><td><input type="hidden" name="on0" value="Select Donation Amount">Select Donation Amount</td></tr><tr><td><select name="os0">
+	<option value="Small">Small $5.00 USD</option>
+	<option value="Medium">Medium $10.00 USD</option>
+	<option value="Big">Big $15.00 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
 		</div>
 	<?php
 }
-
