@@ -1,11 +1,11 @@
 === Plugin Name ===
 Contributors: vchawla26
 Donate link:
-Tags: social, share, share buttons, social boost
+Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO
 Requires at least: 2.5
 Donate link: http://vasuchawla.com/
-Tested up to: 3.4
-Stable tag: 1.1
+Tested up to: 3.5.1
+Stable tag: 2.0
 License: GPLv2 or later
 
 Shows social sharing buttons in post excerpts, post content, pages and via shortcodes.
@@ -15,14 +15,30 @@ Shows social sharing buttons in post excerpts, post content, pages and via short
 Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode or a widget. Expected to support more sharing options and more customizable widget in coming versions.
 
 = Now Also Supports =
+
 * Widget
 * Shortcode
 
 = Current Buttons =
 
-* Facebook
-* Google Plus
-* Twitter
+* Facebook Like
+* Google Plus +1
+* Twitter Tweet
+* Twitter Follow
+* PinInterest Pin
+
+= Suggestions =
+
+Please mail me your suggestions at vchawla26@gmail.com
+For custom builds or help, please mail me at same or visit http://www.vasuchawla.com
+
+= Future Features =
+
+1. Addition of few new buttons in the immediate next version and more control over button layout
+1. Proper code optimization
+1. Addition of settings in the widgets
+1. Overwriting the settings in the shortcodes by passing as a parameter
+1. other modifications suggested by users.
 
 
 == Installation ==
@@ -47,16 +63,16 @@ Sure, Definitely :)
 Just go to my site http://vasuchawla.com and fill the contact form
 
 == Upgrade Notice ==
-Within the week of initial release, i now added a widget in the plugin too :)
+Now, Supports 2 new buttons and more stability
 
-== Future Features ==
 
-1. Addition of 5 new buttons in the immediate next version
-1. Addition of settings in the widgets
-1. Overwriting the settings in the shortcodes by passing as a parameter
-1. other modifications suggested by users.
 
 == Changelog ==
+
+= 1.5 =
+* Added 2 new buttons
+* More stable admin option page with tabs now
+* Now i like donations, but its your wish to donate or not..I am not forcing you, the plugin will work the same :)
 
 = 1.1 =
 * Added a basic widget
