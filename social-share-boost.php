@@ -2,7 +2,7 @@
 /* Plugin Name: Social Share Boost
 Plugin URI: http://vasuchawla.com/
 Description: Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode.
-Version: 2.0
+Version: 2.1
 Author: Vasu Chawla
 Author URI: http://vasuchawla.com/
 License: GPLv2 or later
@@ -170,9 +170,9 @@ function ssb_admin_function()
 			<?php screen_icon('admin'); ?><h2>Social Share Boost Settings</h2>
 			<form method="POST" action="">
 			<h3 class="nav-tab-wrapper">
-				<a href="#tab1" class="nav-tab nav-tab-active">General</a>
-				<a href="#tab2" class="nav-tab">Buttons</a>
-				<a href="#tab3" class="nav-tab">Others</a>
+				<a href="#tab1" class="nav-tab nac-tab nav-tab-active">General</a>
+				<a href="#tab2" class="nav-tab nac-tab">Buttons</a>
+				<a href="#tab3" class="nav-tab nac-tab">Others</a>
 			</h3>
 			<div class="wp-tab-panela" id="tab1" style="">
 				<table class="form-table">

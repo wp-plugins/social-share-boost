@@ -5,7 +5,7 @@ Tags: social, share, share buttons, social boost, social share, facebook, twitte
 Requires at least: 2.5
 Donate link: http://vasuchawla.com/
 Tested up to: 3.5.1
-Stable tag: 2.0
+Stable tag: 2.1
 License: GPLv2 or later
 
 Shows social sharing buttons in post excerpts, post content, pages and via shortcodes.

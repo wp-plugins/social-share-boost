@@ -1,5 +1,5 @@
 jQuery(document).ready( function($) {
-	$('.nav-tab').click(function(event){
+	$('.nac-tab').click(function(event){
 		event.preventDefault();
 		$('.nav-tab-active').removeClass('nav-tab-active');
 		$(this).addClass('nav-tab-active');
