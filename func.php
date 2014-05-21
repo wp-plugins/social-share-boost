@@ -4,7 +4,7 @@ function ssb_in_content($content)
 {
     global $ssb;
 
-if(is_singular()  ){ 
+if(1 ){
 
     $hide_list = $ssb['hide_in_id'];
     $hide_arr = explode(",", $hide_list);
@@ -30,9 +30,9 @@ if(is_singular()  ){
 function ssb_in_excerpt($content)
 {
     global $ssb;
- 
-if(1 ){ 
-    if( get_post_type( $this_id )=="post" && isset($ssb['show_posts']))   
+
+if(1 ){
+    if( get_post_type( $this_id )=="post" && isset($ssb['show_posts']))
     {
         // print_r($ssb);
         if(isset($ssb['show_top']) && $ssb['show_top']==1)
@@ -75,7 +75,7 @@ function ssb_shortcode( $atts )
 
 
 
- 
+
 
 class ssb_widget extends WP_Widget
 {
@@ -155,7 +155,7 @@ if($linkedin)
         $stmbl = esc_attr($instance['stmbl']);
         $tumblr = esc_attr($instance['tumblr']);
         $linkedin = esc_attr($instance['linkedin']);
-        
+
 
         echo'<p><label for="'. $this->get_field_id('title').'">Title:</label><input class="widefat" id="'. $this->get_field_id('title').'" name="'. $this->get_field_name('title').'>" type="text" value="'. $title.'" /></p>';
         echo'<p><label for="'. $this->get_field_id('url').'">Url to share(leave empty to use homeurl):</label><input class="widefat" id="'. $this->get_field_id('url').'" name="'. $this->get_field_name('url').'>" type="text" value="'. $url.'" /></p>';
@@ -213,34 +213,34 @@ function ssb_widget_reg_func() {
 function ssb_notice() {
     global $current_user, $pagenow;
     $user_id = $current_user->ID;
-    
+
     /* Check that the user hasn't already clicked to ignore the message */
-    if ( ! get_user_meta($user_id, 'ssb_notice_ignore31') ) {
+    if ( ! get_user_meta($user_id, 'ssb_notice_ignore32') ) {
         if( $pagenow != 'admin.php' && $_GET['page'] != 'social-share-boost' ) {
             echo '<div class="updated"><p>';
-            printf(__('<a href="%1$s" style="float: right;">Dismiss</a>'), '?ssb_notice_ignore31=0');
-            echo '<strong>Social Share Boost has gone through a major overhaul in version 3.1! ';
+            printf(__('<a href="%1$s" style="float: right;">Dismiss</a>'), '?ssb_notice_ignore32=0');
+            echo '<strong>Social Share Boost has gone through a major overhaul in version 3.2! ';
             printf(__('<a href="%1$s">Find out what’s new!</a>'), 'admin.php?page=social-share-boost&whatsnew=true');
             echo '</strong>';
             echo "</p></div>";
         }
     }
 }
-function ssb_notice_ignore31_func() {
+function ssb_notice_ignore32_func() {
     global $current_user, $pagenow;
 
     $user_id = $current_user->ID;
-    
+
     if( $pagenow == 'admin.php' && $_GET['page'] == 'social-share-boost' && isset($_GET['whatsnew']) && $_GET['whatsnew']=='true' ) {
-        add_user_meta($user_id, 'ssb_notice_ignore31', 'true', true);
+        add_user_meta($user_id, 'ssb_notice_ignore32', 'true', true);
     }
 
-    if ( isset($_GET['ssb_notice_ignore31']) && '0' == $_GET['ssb_notice_ignore31'] ) {
-        add_user_meta($user_id, 'ssb_notice_ignore31', 'true', true);
+    if ( isset($_GET['ssb_notice_ignore32']) && '0' == $_GET['ssb_notice_ignore32'] ) {
+        add_user_meta($user_id, 'ssb_notice_ignore32', 'true', true);
     }
 
-    if ( isset($_GET['ssb_whatsnewbox31']) && '0' == $_GET['ssb_whatsnewbox31'] ) {
-        add_user_meta($user_id, 'ssb_whatsnewbox31', 'true', true);
+    if ( isset($_GET['ssb_whatsnewbox32']) && '0' == $_GET['ssb_whatsnewbox32'] ) {
+        add_user_meta($user_id, 'ssb_whatsnewbox32', 'true', true);
     }
 }
 
@@ -250,9 +250,9 @@ function ssb_notice_ignore31_func() {
 if(isset($ssb['show_shortcode'])){add_shortcode( 'ssboost', 'ssb_shortcode' );}
 if(isset($ssb['show_excerpt'])){add_filter('the_excerpt', 'ssb_in_excerpt');}
 if(isset($ssb['show_widget'])){add_action( 'widgets_init', 'ssb_widget_reg_func' );}
- 
+
 add_filter('the_content', 'ssb_in_content');
- 
+
 add_action( 'wp_enqueue_scripts', 'ssb_button_scripts' );
 add_action('admin_notices', 'ssb_notice');
-add_action('admin_init', 'ssb_notice_ignore31_func');
+add_action('admin_init', 'ssb_notice_ignore32_func');

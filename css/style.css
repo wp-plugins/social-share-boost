@@ -2,6 +2,6 @@ ul.ssb_list_wrapper{list-style: none !important;width:100%;display: inline-block
 ul.ssb_list_wrapper li{float: left;list-style: none !important;display: inline-block;padding-left:10px;max-width: 160px;background: none !important;} 
 ul.ssb_list_wrapper li.fb1{max-width:90px;}
 ul.ssb_list_wrapper li.fb2{max-width:132px;}
-ul.ssb_list_wrapper li.twtr{max-width:87px;}
+ul.ssb_list_wrapper li.twtr{max-width:100px;}
 ul.ssb_list_wrapper li.gplus{max-width:72px;}
 ul.ssb_list_wrapper.ssb_widget li{display: block;max-width: 100%;width: 100%;}

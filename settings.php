@@ -7,7 +7,7 @@ $ssb = get_option("ssb_option");
 
 function ssb_get_fields(){
     $fields = array();
-    $fields['General'] = array( 
+    $fields['General'] = array(
         array('type'=>'hidden'), //this one is cuz, i dont want the settings array to be empty as this might show  "Illegal string offset" warning on Line 56
         array('title'=>'Show in pages','id'=>'show_pages','type'=>'checkbox'),
         array('title'=>'Show in posts','id'=>'show_posts','type'=>'checkbox'),
@@ -17,7 +17,7 @@ function ssb_get_fields(){
         array('type'=>'line'),
 
         array('title'=>'Disable plugin in posts/pages ID (comma separated)','id'=>'hide_in_id','type'=>'text'),
-        
+
         array('title'=>'Show in page/post top','id'=>'show_top','type'=>'checkbox'),
         array('title'=>'Show in page/post bottom','id'=>'show_bottom','type'=>'checkbox')
     );
@@ -39,7 +39,7 @@ function ssb_get_fields(){
 
 
 return $fields;
-   
+
 }
 
 
@@ -69,7 +69,7 @@ function ssb_get_fields_html($field_ary,$i)
         elseif($field['type']=='hidden')
             $html.='<input type="hidden" name="nullval" value=1 />';
         else
-        { 
+        {
             $ssb_sub = get_option("ssb_option");
             if(isset($ssb_sub[$field['id']]))
              $curval = $ssb_sub[$field['id']];
@@ -95,12 +95,12 @@ function ssb_get_fields_html($field_ary,$i)
                                     $html.=' checked="checked" ';
                                 $html.='/>';
                                 break;
-                            
+
             }
             $html.= '</td></tr>';
 
 
-        }    
+        }
         // print_r($field);
     }
 
@@ -124,7 +124,7 @@ function ssb_admin_function(){
         echo'<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
     }
     $ssb = get_option("ssb_option");
-    // print_r($ssb); 
+    // print_r($ssb);
     $opt = "";
     echo'<div class="wrap">';
     screen_icon('admin');
@@ -137,17 +137,17 @@ function ssb_admin_function(){
 
 
 
- 
+
             global $current_user;
 
             $user_id = $current_user->ID;
-            if ( !get_user_meta($user_id, 'ssb_whatsnewbox31') ):
+            if ( !get_user_meta($user_id, 'ssb_whatsnewbox32') ):
         ?>
             <div id="whatsnew" style="background-color: #e4f2fd;border-color: #539bb9;color: #333;text-shadow: 1px 1px 0 #fff;padding: 1em;-webkit-border-radius: 3px;border-radius: 3px;border-width: 1px;border-style: solid;margin: 0 0 1em;">
             <h2>Social Share Boost – new and improved!</h2>
             <ul>
 
-                <li><strong>3.1 FIX:</strong> Fixed that Some themes were showing the "tweet" text in the beginning of there excerpts. If anyone still face this issue, please feel free to contact</li>
+                <li><strong>3.2 FIX:</strong> Removed that stupid 'tweet' text</li>
 
                   <li> &nbsp;&nbsp;</li>
   <li></li>
@@ -160,24 +160,24 @@ function ssb_admin_function(){
                 <li><strong>NEW FEATURE:</strong>Buttons are separately enabled/disabled for widgets. Basically widget is more powerful now !</li>
 
                 <li><strong>NEW SHORTCODE:</strong> <code>[ssboost url=<?php echo home_url();?>]</code> – outputs the buttons to share the url specified url field. <br />The plugin's shortcode can be used in 2 ways: <code>[ssboost url=<?php echo home_url();?>]</code> and <code>[ssboost]</code>.</li>
-              
 
-                <li><strong>3.1 FIX:</strong> Fixed that Some themes were showing the "tweet" text in the beginning of there excerpts. If anyone still face this issue, please feel free to contact</li>
+
+                <li><strong>3.2 FIX:</strong> Removed that stupid 'tweet' text</li>
                 <li></li>
 
 
                 <li>And many more <strong> performance improvements </strong> and <strong>bugfixes</strong>.</li>
             </ul>
- 
-         
-            <a href="admin.php?page=social-share-boost&amp;ssb_whatsnewbox31=0" class="button-secondary">Dismiss</a>
+
+
+            <a href="admin.php?page=social-share-boost&amp;ssb_whatsnewbox32=0" class="button-secondary">Dismiss</a>
             </div>
-        <?php endif; 
+        <?php endif;
 
 
 
 
- 
+
 
 
 

@@ -2,11 +2,11 @@
 /* Plugin Name: Social Share Boost
 Plugin URI: http://vasuchawla.com/
 Description: Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode.
-Version: 3.1
+Version: 3.2
 Author: Vasu Chawla
 Author URI: http://vasuchawla.com/
 License: GPLv2 or later
-*/ 
+*/
 
 
 
@@ -25,10 +25,10 @@ register_activation_hook(__FILE__, 'ssb_activ');
 register_deactivation_hook(__FILE__, 'ssb_deact');
 
 function ssb_plugpage_links( $links,$plugin ) {
-	if($plugin == plugin_basename(__FILE__)) 
+	if($plugin == plugin_basename(__FILE__))
 	{
 		$links[] = '<a href="/wp-admin/admin.php?page=social-share-boost">Settings</a>';
-		$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F6UKBGTQ4YTZG" target="_blank">Buy Me A Coffee</a>';
+		$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F6UKBGTQ4YTZG" target="_blank"><strong><b>Buy Me A Coffee</b></strong></a>';
 	}
 	return $links;
 }
@@ -71,7 +71,7 @@ function ssb_output($upu,$ssb_artificial,$is_widget)
 	}
 	if(isset($ssb_artificial['show_button_twtr']))
 	{
-		$ssb_html.='<li class="twtr"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$url_to_share.'">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></li>';
+		$ssb_html.='<li class="twtr"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$url_to_share.'">&nbsp;</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></li>';
 	}
 
 	// if($ssb_artificial['show_button_twtrfollow'])
