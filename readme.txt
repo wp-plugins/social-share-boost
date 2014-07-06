@@ -4,7 +4,7 @@ Tags: social, share, share buttons, social boost, social share, facebook, twitte
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F6UKBGTQ4YTZG
 Requires at least: 2.5
 Tested up to: 3.9.1
-Stable tag: 3.2
+Stable tag: 4.0
 License: GPLv2 or later
 
 
@@ -12,7 +12,10 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 == Description ==
 
-
+*new: 
+More Buttons
+More Widgets
+More customizable
 
 Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode or a widget. Expected to support more sharing options and more customizable widget in coming versions.
 
@@ -20,8 +23,9 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 * Widget
 * Shortcode
-* CSS Editing
+* Icon width (icon width needs to vary if locale changes)
 * Disabling on selected pages/posts
+* Social Profile Icons 
 
 = Current Buttons =
 
@@ -33,23 +37,21 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 * Stumble
 * Tumblr
 * LinkedIn
+* Xing
+* ScoopIt
 
 = Suggestions =
 
-Please mail me your suggestions at vchawla26@gmail.com
-For custom builds or help, please mail me at same or visit http://www.vasuchawla.com
-
-= Future Features =
-
-1. Addition of few new buttons and more control over button layout
-2. Overwriting more settings in the shortcodes by passing as a parameter
-3. other modifications suggested by users.
+Please mail me your suggestions at admin@syntatical.com
+For custom builds or help, please mail me at same or visit:
+http://www.syntatical.com
+http://www.vasuchawla.com
 
 == Screenshots ==
-1. Social Share Boost Basic Settings in wordpress admin-panel
-2. Social Share Boost Buttons settings in wordpress admin-panel
-3. Social Share Boost widget
-4. Social Share Boost output in excerpt
+1. Social Share Boost buttons output in post/page
+2. Social Share Boost profile icons in widget
+3. Social Share Boost Button Settings in wordpress admin-panel
+4. Social Share Boost Button settings in wordpress admin-panel 2
 
 == Installation ==
 
@@ -58,7 +60,7 @@ For custom builds or help, please mail me at same or visit http://www.vasuchawla
 
 = How to use =
 
-1. Social Share Boost is available from the WordPress 'S. S. Boost'.
+1. Social Share Boost is available from the WordPress menu 'Syntatical'.
 2. The options are distributed into various categories
 3. Just set those easy options and save and the plugin is ready to work
 4. For help or support, just click on support link under the plugin name in the plugins page. And i don't mind if you want to support development via donate link.
@@ -70,7 +72,7 @@ For custom builds or help, please mail me at same or visit http://www.vasuchawla
 = I am going to provide you help related to the plugin =
 
 Sure, Definitely :)
-Just go to my site http://vasuchawla.com and fill the contact form
+Just go to my site http://vasuchawla.com or http://www.syntatical.com and fill the contact form
 
 == Upgrade Notice ==
 Now, Supports many buttons and more stability.
@@ -78,6 +80,16 @@ Now, Supports many buttons and more stability.
 
 
 == Changelog ==
+
+
+= 4.0 =
+* Major Changes
+* New Admin UI
+* Now supports wordpress 3.9.1
+* More Widgets
+* More Customization
+* Some code parts are re-written
+
 
 = 3.2 =
 fixed the bug that was showing "tweet" work in the beginning of excerpts.

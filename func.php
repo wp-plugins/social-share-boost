@@ -1,258 +1,288 @@
 <?php
-global $ssb;
-function ssb_in_content($content)
-{
-    global $ssb;
 
-if(1 ){
+function ssb_get_fields(){
+	$fields = array();
+	$fields['General'] = array(
+		array('type'=>'hidden'), //this one is cuz, i dont want the settings array to be empty as this might show  "Illegal string offset" warning on Line 56
+		array('title'=>'Show in pages','id'=>'show_pages','type'=>'checkbox'),
+		array('title'=>'Show in posts','id'=>'show_posts','type'=>'checkbox'),
+		array('title'=>'Show in Excerpt','id'=>'show_excerpt','type'=>'checkbox') ,
+		array('type'=>'line'),
+		array('title'=>'Disable plugin in posts/pages ID (comma separated)','id'=>'hide_in_id','type'=>'text'),
+		array('title'=>'Show in page/post top','id'=>'show_top','type'=>'checkbox'),
+		array('title'=>'Show in page/post bottom','id'=>'show_bottom','type'=>'checkbox'),
+		array('title'=>'Hide Notices <sub>(enable this if you see some errors/notices)</sub>','id'=>'hide_erors','type'=>'checkbox')
+	);
 
-    $hide_list = $ssb['hide_in_id'];
-    $hide_arr = explode(",", $hide_list);
+	$fields['Buttons'] = array(
+		array('title'=>'Facebook like button','id'=>'show_button_fb_like','type'=>'checkbox'),
+		array('title'=>'Facebook share button <sub>(like button above must be enabled)</sub>','id'=>'show_button_fb_share','type'=>'checkbox'),
+		array('title'=>'Tweet Button','id'=>'show_button_twtr','type'=>'checkbox'),
+		array('title'=>'Google+ button','id'=>'show_button_gplus','type'=>'checkbox'),
+		array('title'=>'Pinterest button','id'=>'show_button_pintrest','type'=>'checkbox'),
+		array('title'=>'Stumble button','id'=>'show_button_stumble','type'=>'checkbox'),
+		array('title'=>'Tumblr button','id'=>'show_button_tumblr','type'=>'checkbox'),
+		array('title'=>'LinkedIn button','id'=>'show_button_linkedin','type'=>'checkbox'),
+		array('title'=>'Scoop It button','id'=>'show_button_scoopit','type'=>'checkbox'),
+		array('title'=>'XING button','id'=>'show_button_xing','type'=>'checkbox'),
 
-    foreach ($hide_arr as $key => $value) {
-        $hide_arr[$key] = trim($value);
-    }
-    //print_r($hide_arr);
-    $this_id = get_the_ID();
-    if (in_array($this_id, $hide_arr))
-        return $content;
-    if(  (get_post_type( $this_id )=="page" && isset($ssb['show_pages'])) or  (get_post_type( $this_id )=="post" && isset($ssb['show_posts']))   )
-    {
-        // print_r($ssb);
-        if(isset($ssb['show_top']) && $ssb['show_top']==1)
-            $content = ssb_output(1, $ssb,0).$content;
-        if(isset($ssb['show_bottom']) && $ssb['show_bottom']==1)
-            $content =$content.ssb_output(1, $ssb,0);
-    }}
 
-      return $content;
+
+	);
+
+
+	$fields['Button Width'] = array(
+		array('title'=>'Facebook like button','id'=>'width_button_fb_like','type'=>'text'),
+		array('title'=>'Facebook share button ','id'=>'width_button_fb_share','type'=>'text'),
+		array('title'=>'Tweet Button','id'=>'width_button_twtr','type'=>'text'),
+		array('title'=>'Google+ button','id'=>'width_button_gplus','type'=>'text'),
+		array('title'=>'Pinterest button','id'=>'width_button_pintrest','type'=>'text'),
+		array('title'=>'Stumble button','id'=>'width_button_stumble','type'=>'text'),
+		array('title'=>'Tumblr button','id'=>'width_button_tumblr','type'=>'text'),
+		array('title'=>'LinkedIn button','id'=>'width_button_linkedin','type'=>'text'),
+		array('title'=>'Scoop It button','id'=>'width_button_scoopit','type'=>'text'),
+		array('title'=>'XING button','id'=>'width_button_xing','type'=>'text'),
+
+
+
+	);
+
+
+
+
+
+// $fields['Social Profile Icons'] = array(
+// 		array('title'=>'Facebook Page Url:','id'=>'show_button_fb_like','type'=>'checkbox'),
+// 		array('title'=>'Twitter Profile Url','id'=>'show_button_fb_share','type'=>'checkbox'),
+// 		array('title'=>'You Tube Channel Url','id'=>'show_button_twtr','type'=>'checkbox'),
+// 		array('title'=>'Google+ button','id'=>'show_button_gplus','type'=>'checkbox'),
+// 		array('title'=>'Pinterest button','id'=>'show_button_pintrest','type'=>'checkbox'),
+// 		array('title'=>'Stumble button','id'=>'show_button_stumble','type'=>'checkbox'),
+// 		array('title'=>'Tumblr button','id'=>'show_button_tumblr','type'=>'checkbox'),
+// 		array('title'=>'LinkedIn button','id'=>'show_button_linkedin','type'=>'checkbox'),
+// 		array('title'=>'Scoop It button','id'=>'show_button_scoopit','type'=>'checkbox'),
+
+// 	);
+
+	// $fields['Edit Css'] = array(
+	//     array('title'=>'Facebook like button','id'=>'ssb_css','type'=>'textarea'),
+	// );
+
+
+return $fields;
+
 }
-function ssb_in_excerpt($content)
-{
-    global $ssb;
 
-if(1 ){
-    if( get_post_type( $this_id )=="post" && isset($ssb['show_posts']))
-    {
-        // print_r($ssb);
-        if(isset($ssb['show_top']) && $ssb['show_top']==1)
-            $content = ssb_output(1, $ssb,0).$content;
-        if(isset($ssb['show_bottom']) && $ssb['show_bottom']==1)
-            $content =$content.ssb_output(1, $ssb,0);
-    }
+
+
+
+
+
+
+
+
+
+
+
+function ssb_output($upu,$ssb_artificial,$is_widget)
+{
+
+	
+
+
+
+
+	$ssb_html="";
+	if($upu==1)
+		$url_to_share = get_permalink();
+	elseif($upu==0)
+	{
+		$url_to_share = $ssb_artificial['url2share'];
+	}
+	if($is_widget)
+		$ssb_html.=  '<ul class="ssb_list_wrapper ssb_widget">';
+	else
+		$ssb_html.=  '<ul class="ssb_list_wrapper">';
+	if(isset($ssb_artificial['show_button_fb_like']))
+	{
+		$ssb_html.='<li class="fb';
+		if(isset($ssb_artificial['show_button_fb_share']))
+			$ssb_html.='2" style="width:'.$ssb_artificial['width_button_fb_share'].'px';
+		else
+			$ssb_html.='1" style="width:'.$ssb_artificial['width_button_fb_like'].'px';
+		$ssb_html.='"><iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($url_to_share).'&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=';
+
+ 
+		if(isset($ssb_artificial['show_button_fb_share']))
+			$ssb_html.='true&amp;width='.$ssb_artificial['width_button_fb_share'];
+		else
+			$ssb_html.='false&amp;width='.$ssb_artificial['width_button_fb_like'];
+		$ssb_html.='&amp;height=21&amp;appId=307091639398582" scrolling="no" frameborder="0" style="border:none; overflow:hidden;  width:150px; height:21px;" allowTransparency="true"></iframe></li>';
+
+ 
+
+
+
+
+
+
+
+
+	}
+	if(isset($ssb_artificial['show_button_twtr']))
+	{
+		$ssb_html.='<li class="twtr" style="width:'.$ssb_artificial['width_button_twtr'].'px"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$url_to_share.'">&nbsp;</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></li>';
+	}
+
+	// if($ssb_artificial['show_button_twtrfollow'])
+	// 	$ssb_html.='<li></li>';
+
+	if(isset($ssb_artificial['show_button_gplus']))
+	{
+		$ssb_html.='<li class="gplus" style="width:'.$ssb_artificial['width_button_gplus'].'px"><div class="g-plusone" data-size="medium" data-href="'.$url_to_share.'"></div></li>';
+		add_action('wp_footer', 'gplus_btn_script');
+	}
+	if(isset($ssb_artificial['show_button_pintrest']))
+	{
+		$ssb_html.='<li class="ssb_pin" style="width:'.$ssb_artificial['width_button_pintrest'].'px"><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a></li>';
+		wp_enqueue_script('pintrest_script');
+	}
+	if(isset($ssb_artificial['show_button_stumble']))
+	{
+		$ssb_html.='<li class="ssb_stum" style="width:'.$ssb_artificial['width_button_stumble'].'px"><su:badge layout="1" location="'.$url_to_share.'"></su:badge><script type="text/javascript">
+		(function() {
+			var li = document.createElement(\'script\'); li.type = \'text/javascript\'; li.async = true;
+			li.src = (\'https:\' == document.location.protocol ? \'https:\' : \'http:\') + \'//platform.stumbleupon.com/1/widgets.js\';
+			var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(li, s);
+		})();</script></li>';
+	}
+	if(isset($ssb_artificial['show_button_tumblr']))
+	{
+		$ssb_html.='<li class="ssb_tublr" style="width:'.$ssb_artificial['width_button_tumblr'].'px"><a href="http://www.tumblr.com/share/link?url='.urlencode($url_to_share) .'&name='.urlencode('INSERT_NAME_HERE') .'&description='.urlencode('INSERT_DESCRIPTION_HERE') .'" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:'.$ssb_artificial['width_button_tumblr'].'px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_1.png\') top left no-repeat transparent;">Share on Tumblr</a></li>';
+		wp_enqueue_script( 'tumblr_script' );
+	}
+	if(isset($ssb_artificial['show_button_linkedin']))
+	{
+		$ssb_html.='<li class="ssb_linkedin" style="width:'.$ssb_artificial['width_button_linkedin'].'px"><script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script><script type="IN/Share" data-url="'.$url_to_share.'" data-counter="right"></script></li>';
+	}
+
+		if(isset($ssb_artificial['show_button_scoopit']))
+	{
+		$ssb_html.='<li class="ssb_scoopit" style="width:'.$ssb_artificial['width_button_scoopit'].'px"><a href="http://www.scoop.it" class="scoopit-button" scit-position="horizontal" scit-url="'.$url_to_share.'" >&nbsp;</a><script type="text/javascript" src="http://www.scoop.it/button/scit.js"></script>
+		</li>';
+	}
+
+if(isset($ssb_artificial['show_button_xing']))
+	{
+
+
+	$ssb_html.='<li class="ssb_xing" style="width:'.$ssb_artificial['width_button_xing'].'px"><div data-type="XING/Share" data-counter="right"   style="width:'.$ssb_artificial['width_button_xing'].'px" data-url="'.$url_to_share.'"></div>
+<script>
+  ;(function (d, s) {
+    var x = d.createElement(s),
+      s = d.getElementsByTagName(s)[0];
+      x.src = "https://www.xing-share.com/js/external/share.js";
+      s.parentNode.insertBefore(x, s);
+  })(document, "script");
+</script></li>';
+
+
+}
+
+
+
+
+
+
+	$ssb_html.="</ul>";
+
+	
+	return $ssb_html;
+}
+
+
+
+function ssb_in_content($content){
+	global $ssb; 
+
+	if(1 ){
+
+	$hide_list = $ssb['hide_in_id'];
+	$hide_arr = explode(",", $hide_list);
+
+	foreach ($hide_arr as $key => $value) {
+		$hide_arr[$key] = trim($value);
+	}
+	//print_r($hide_arr);
+	$this_id = get_the_ID();
+	if (in_array($this_id, $hide_arr))
+		return $content;
+	if(  (get_post_type( $this_id )=="page" && isset($ssb['show_pages'])) or  (get_post_type( $this_id )=="post" && isset($ssb['show_posts']))   )
+	{
+		// print_r($ssb);
+		if(isset($ssb['show_top']) && $ssb['show_top']==1)
+			$content = ssb_output(1, $ssb,0).$content;
+		if(isset($ssb['show_bottom']) && $ssb['show_bottom']==1)
+			$content =$content.ssb_output(1, $ssb,0);
+	}}
+
+	  return $content;
+}
+
+
+function ssb_in_excerpt($content){
+	global $ssb;
+
+	if(1 ){
+	if( get_post_type( $this_id )=="post" && isset($ssb['show_posts']))
+	{
+		// print_r($ssb);
+		if(isset($ssb['show_top']) && $ssb['show_top']==1)
+			$content = ssb_output(1, $ssb,0).$content;
+		if(isset($ssb['show_bottom']) && $ssb['show_bottom']==1)
+			$content =$content.ssb_output(1, $ssb,0);
+	}
 
    }
-      return $content;
+	  return $content;
 }
+
+
+
 function ssb_button_scripts() {
-    wp_register_script('tumblr_script','http://platform.tumblr.com/v1/share.js',false,'1.0',true);
-    wp_register_script('pintrest_script','//assets.pinterest.com/js/pinit.js',false,'1.0',true);
-    wp_register_style('ssb_style', plugins_url('css/style.css', __FILE__));
-    wp_enqueue_style('ssb_style');
+	wp_register_script('tumblr_script','http://platform.tumblr.com/v1/share.js',false,'1.0',true);
+	wp_register_script('pintrest_script','//assets.pinterest.com/js/pinit.js',false,'1.0',true);
+	wp_register_style('ssb_style', plugins_url('css/style.css', __FILE__));
+	wp_enqueue_style('ssb_style');
 }
-function gplus_btn_script()
-{
-    ?>
-    <script type="text/javascript">
-    (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/platform.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-    </script>
-    <?php
-}
-function ssb_shortcode( $atts )
-{
-     extract( shortcode_atts( array(
-          'url' => get_permalink()
-     ), $atts ) );
-     global $ssb;
-     $s = $ssb;
-     $s['url2share'] = "{$url}";
-     return ssb_output(0,$s,0);
+function gplus_btn_script(){
+	?>
+	<script type="text/javascript">
+	(function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/platform.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
+	</script>
+	<?php
 }
 
-
-
-
-
-class ssb_widget extends WP_Widget
-{
-    function ssb_widget()
-    {
-        parent::WP_Widget(false, $name = 'Social Share Boost');
-    }
-    function widget($args, $instance)
-    {
-        extract( $args );
-        $title = apply_filters('widget_title', $instance['title']);
-        $url = apply_filters('widget_url', $instance['url']);
-        $fb_like = apply_filters('widget_fb_like', $instance['fb_like']);
-        $fb_share = apply_filters('widget_fb_share', $instance['fb_share']);
-        $twtr = apply_filters('widget_twtr', $instance['twtr']);
-        $gplus = apply_filters('widget_gplus', $instance['gplus']);
-        $pint = apply_filters('widget_pint', $instance['pint']);
-        $stmbl = apply_filters('widget_stmbl', $instance['stmbl']);
-        $tumblr = apply_filters('widget_tumblr', $instance['tumblr']);
-        $linkedin = apply_filters('widget_linkedin', $instance['linkedin']);
-        echo $before_widget;
-        if ( $title )
-            echo $before_title . $title . $after_title;
-        global $ssb;
-        $s = array();
-        if ($url=="")
-            $s['url2share'] = home_url();
-        else
-            $s['url2share'] = $url;
-if($fb_like)
-    $s['show_button_fb_like'] = 1;
-if($fb_share)
-    $s['show_button_fb_share'] = 1;
-if($twtr)
-    $s['show_button_twtr'] = 1;
-if($gplus)
-    $s['show_button_gplus'] = 1;
-if($pint)
-    $s['show_button_pintrest'] = 1;
-if($stmbl)
-    $s['show_button_stumble'] = 1;
-if($tumblr)
-    $s['show_button_tumblr'] = 1;
-if($linkedin)
-    $s['show_button_linkedin'] = 1;
-
-
-        echo ssb_output(0,$s,1);
-        // echo ssb_shortcode();
-        echo $after_widget;
-    }
-    function update($new_instance, $old_instance)
-    {
-        $instance = $old_instance;
-        $instance['title'] = strip_tags($new_instance['title']);
-        $instance['url'] = strip_tags($new_instance['url']);
-        $instance['fb_like'] = strip_tags($new_instance['fb_like']);
-        $instance['fb_share'] = strip_tags($new_instance['fb_share']);
-        $instance['twtr'] = strip_tags($new_instance['twtr']);
-        $instance['gplus'] = strip_tags($new_instance['gplus']);
-        $instance['pint'] = strip_tags($new_instance['pint']);
-        $instance['stmbl'] = strip_tags($new_instance['stmbl']);
-        $instance['tumblr'] = strip_tags($new_instance['tumblr']);
-        $instance['linkedin'] = strip_tags($new_instance['linkedin']);
-        // $instance['message'] = strip_tags($new_instance['message']);
-        return $instance;
-    }
-    function form($instance)
-    {
-        $title = esc_attr($instance['title']);
-        $url = esc_attr($instance['url']);
-        $fb_like = esc_attr($instance['fb_like']);
-        $fb_share = esc_attr($instance['fb_share']);
-        $twtr = esc_attr($instance['twtr']);
-        $gplus = esc_attr($instance['gplus']);
-        $pint = esc_attr($instance['pint']);
-        $stmbl = esc_attr($instance['stmbl']);
-        $tumblr = esc_attr($instance['tumblr']);
-        $linkedin = esc_attr($instance['linkedin']);
-
-
-        echo'<p><label for="'. $this->get_field_id('title').'">Title:</label><input class="widefat" id="'. $this->get_field_id('title').'" name="'. $this->get_field_name('title').'>" type="text" value="'. $title.'" /></p>';
-        echo'<p><label for="'. $this->get_field_id('url').'">Url to share(leave empty to use homeurl):</label><input class="widefat" id="'. $this->get_field_id('url').'" name="'. $this->get_field_name('url').'>" type="text" value="'. $url.'" /></p>';
-
-        echo'<p><label for="'. $this->get_field_id('fb_like').'">Facebook Like:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('fb_like').'" name="'. $this->get_field_name('fb_like').'>" type="checkbox" ';
-        if ($fb_like)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-           echo'<p><label for="'. $this->get_field_id('fb_share').'">Facebook Share:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('fb_share').'" name="'. $this->get_field_name('fb_share').'>" type="checkbox" ';
-        if ($fb_share)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-
-           echo'<p><label for="'. $this->get_field_id('twtr').'">Tweeter:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('twtr').'" name="'. $this->get_field_name('twtr').'>" type="checkbox" ';
-        if ($twtr)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-           echo'<p><label for="'. $this->get_field_id('gplus').'">Google Plus:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('gplus').'" name="'. $this->get_field_name('gplus').'>" type="checkbox" ';
-        if ($gplus)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-           echo'<p><label for="'. $this->get_field_id('pint').'">Pinterest:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('pint').'" name="'. $this->get_field_name('pint').'>" type="checkbox" ';
-        if ($pint)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-           echo'<p><label for="'. $this->get_field_id('stmbl').'">Stumbleupon:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('stmbl').'" name="'. $this->get_field_name('stmbl').'>" type="checkbox" ';
-        if ($stmbl)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-           echo'<p><label for="'. $this->get_field_id('tumblr').'">Tumblr:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('tumblr').'" name="'. $this->get_field_name('tumblr').'>" type="checkbox" ';
-        if ($tumblr)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-           echo'<p><label for="'. $this->get_field_id('linkedin').'">LinkedIn:</label> &nbsp;&nbsp; <input class="widefat" id="'. $this->get_field_id('linkedin').'" name="'. $this->get_field_name('linkedin').'>" type="checkbox" ';
-        if ($linkedin)
-            echo ' checked=checked ';
-        echo'value="1" /></p>';
-
-
-
-
-
-    }
-}
-function ssb_widget_reg_func() {
-    register_widget( 'ssb_widget' );
-}
-function ssb_notice() {
-    global $current_user, $pagenow;
-    $user_id = $current_user->ID;
-
-    /* Check that the user hasn't already clicked to ignore the message */
-    if ( ! get_user_meta($user_id, 'ssb_notice_ignore32') ) {
-        if( $pagenow != 'admin.php' && $_GET['page'] != 'social-share-boost' ) {
-            echo '<div class="updated"><p>';
-            printf(__('<a href="%1$s" style="float: right;">Dismiss</a>'), '?ssb_notice_ignore32=0');
-            echo '<strong>Social Share Boost has gone through a major overhaul in version 3.2! ';
-            printf(__('<a href="%1$s">Find out what’s new!</a>'), 'admin.php?page=social-share-boost&whatsnew=true');
-            echo '</strong>';
-            echo "</p></div>";
-        }
-    }
-}
-function ssb_notice_ignore32_func() {
-    global $current_user, $pagenow;
-
-    $user_id = $current_user->ID;
-
-    if( $pagenow == 'admin.php' && $_GET['page'] == 'social-share-boost' && isset($_GET['whatsnew']) && $_GET['whatsnew']=='true' ) {
-        add_user_meta($user_id, 'ssb_notice_ignore32', 'true', true);
-    }
-
-    if ( isset($_GET['ssb_notice_ignore32']) && '0' == $_GET['ssb_notice_ignore32'] ) {
-        add_user_meta($user_id, 'ssb_notice_ignore32', 'true', true);
-    }
-
-    if ( isset($_GET['ssb_whatsnewbox32']) && '0' == $_GET['ssb_whatsnewbox32'] ) {
-        add_user_meta($user_id, 'ssb_whatsnewbox32', 'true', true);
-    }
+function ssb_shortcode( $atts ){
+	 extract( shortcode_atts( array(
+		  'url' => get_permalink()
+	 ), $atts ) );
+	 global $ssb;
+	 $s = $ssb;
+	 $s['url2share'] = "{$url}";
+	 return ssb_output(0,$s,0);
 }
 
-
-
-
-if(isset($ssb['show_shortcode'])){add_shortcode( 'ssboost', 'ssb_shortcode' );}
+ add_shortcode( 'ssboost', 'ssb_shortcode' ); 
 if(isset($ssb['show_excerpt'])){add_filter('the_excerpt', 'ssb_in_excerpt');}
-if(isset($ssb['show_widget'])){add_action( 'widgets_init', 'ssb_widget_reg_func' );}
 
 add_filter('the_content', 'ssb_in_content');
-
 add_action( 'wp_enqueue_scripts', 'ssb_button_scripts' );
-add_action('admin_notices', 'ssb_notice');
-add_action('admin_init', 'ssb_notice_ignore32_func');
+
+
+
+
