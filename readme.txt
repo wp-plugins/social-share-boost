@@ -4,7 +4,7 @@ Tags: social, share, share buttons, social boost, social share, facebook, twitte
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F6UKBGTQ4YTZG
 Requires at least: 2.5
 Tested up to: 3.9.1
-Stable tag: 4.0
+Stable tag: 4.1
 License: GPLv2 or later
 
 
@@ -81,6 +81,10 @@ Now, Supports many buttons and more stability.
 
 == Changelog ==
 
+
+= 4.1 =
+* Uses default values if the width input fields are empty
+* New Admin UI
 
 = 4.0 =
 * Major Changes

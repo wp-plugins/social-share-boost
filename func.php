@@ -88,6 +88,17 @@ function ssb_output($upu,$ssb_artificial,$is_widget)
 {
 
 	
+$width_array = array();
+$width_array['width_button_fb_like'] = ($ssb_artificial['width_button_fb_like']!="") ? $ssb_artificial['width_button_fb_like'] : '86';
+$width_array['width_button_fb_share'] = ($ssb_artificial['width_button_fb_share']!="") ? $ssb_artificial['width_button_fb_share'] : '135';
+$width_array['width_button_twtr'] = ($ssb_artificial['width_button_twtr']!="") ? $ssb_artificial['width_button_twtr'] : '90';
+$width_array['width_button_gplus'] = ($ssb_artificial['width_button_gplus']!="") ? $ssb_artificial['width_button_gplus'] : '68';
+$width_array['width_button_pintrest'] = ($ssb_artificial['width_button_pintrest']!="") ? $ssb_artificial['width_button_pintrest'] : '47';
+$width_array['width_button_stumble'] = ($ssb_artificial['width_button_stumble']!="") ? $ssb_artificial['width_button_stumble'] : '75';
+$width_array['width_button_tumblr'] = ($ssb_artificial['width_button_tumblr']!="") ? $ssb_artificial['width_button_tumblr'] : '85';
+$width_array['width_button_linkedin'] = ($ssb_artificial['width_button_linkedin']!="") ? $ssb_artificial['width_button_linkedin'] : '64';
+$width_array['width_button_scoopit'] = ($ssb_artificial['width_button_scoopit']!="") ? $ssb_artificial['width_button_scoopit'] : '90';
+$width_array['width_button_xing'] = ($ssb_artificial['width_button_xing']!="") ? $ssb_artificial['width_button_xing'] : '56';
 
 
 
@@ -107,31 +118,25 @@ function ssb_output($upu,$ssb_artificial,$is_widget)
 	{
 		$ssb_html.='<li class="fb';
 		if(isset($ssb_artificial['show_button_fb_share']))
-			$ssb_html.='2" style="width:'.$ssb_artificial['width_button_fb_share'].'px';
+			$ssb_html.='2" style="width:'.$width_array['width_button_fb_share'].'px';
 		else
-			$ssb_html.='1" style="width:'.$ssb_artificial['width_button_fb_like'].'px';
+			$ssb_html.='1" style="width:'.$width_array['width_button_fb_like'].'px';
 		$ssb_html.='"><iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($url_to_share).'&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=';
 
  
 		if(isset($ssb_artificial['show_button_fb_share']))
-			$ssb_html.='true&amp;width='.$ssb_artificial['width_button_fb_share'];
+			$ssb_html.='true&amp;width='.$width_array['width_button_fb_share'];
 		else
-			$ssb_html.='false&amp;width='.$ssb_artificial['width_button_fb_like'];
+			$ssb_html.='false&amp;width='.$width_array['width_button_fb_like'];
 		$ssb_html.='&amp;height=21&amp;appId=307091639398582" scrolling="no" frameborder="0" style="border:none; overflow:hidden;  width:150px; height:21px;" allowTransparency="true"></iframe></li>';
 
  
-
-
-
-
-
-
-
+ 
 
 	}
 	if(isset($ssb_artificial['show_button_twtr']))
 	{
-		$ssb_html.='<li class="twtr" style="width:'.$ssb_artificial['width_button_twtr'].'px"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$url_to_share.'">&nbsp;</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></li>';
+		$ssb_html.='<li class="twtr" style="width:'.$width_array['width_button_twtr'].'px"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$url_to_share.'">&nbsp;</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></li>';
 	}
 
 	// if($ssb_artificial['show_button_twtrfollow'])
@@ -139,17 +144,17 @@ function ssb_output($upu,$ssb_artificial,$is_widget)
 
 	if(isset($ssb_artificial['show_button_gplus']))
 	{
-		$ssb_html.='<li class="gplus" style="width:'.$ssb_artificial['width_button_gplus'].'px"><div class="g-plusone" data-size="medium" data-href="'.$url_to_share.'"></div></li>';
+		$ssb_html.='<li class="gplus" style="width:'.$width_array['width_button_gplus'].'px"><div class="g-plusone" data-size="medium" data-href="'.$url_to_share.'"></div></li>';
 		add_action('wp_footer', 'gplus_btn_script');
 	}
 	if(isset($ssb_artificial['show_button_pintrest']))
 	{
-		$ssb_html.='<li class="ssb_pin" style="width:'.$ssb_artificial['width_button_pintrest'].'px"><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a></li>';
+		$ssb_html.='<li class="ssb_pin" style="width:'.$width_array['width_button_pintrest'].'px"><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" ><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a></li>';
 		wp_enqueue_script('pintrest_script');
 	}
 	if(isset($ssb_artificial['show_button_stumble']))
 	{
-		$ssb_html.='<li class="ssb_stum" style="width:'.$ssb_artificial['width_button_stumble'].'px"><su:badge layout="1" location="'.$url_to_share.'"></su:badge><script type="text/javascript">
+		$ssb_html.='<li class="ssb_stum" style="width:'.$width_array['width_button_stumble'].'px"><su:badge layout="1" location="'.$url_to_share.'"></su:badge><script type="text/javascript">
 		(function() {
 			var li = document.createElement(\'script\'); li.type = \'text/javascript\'; li.async = true;
 			li.src = (\'https:\' == document.location.protocol ? \'https:\' : \'http:\') + \'//platform.stumbleupon.com/1/widgets.js\';
@@ -158,17 +163,17 @@ function ssb_output($upu,$ssb_artificial,$is_widget)
 	}
 	if(isset($ssb_artificial['show_button_tumblr']))
 	{
-		$ssb_html.='<li class="ssb_tublr" style="width:'.$ssb_artificial['width_button_tumblr'].'px"><a href="http://www.tumblr.com/share/link?url='.urlencode($url_to_share) .'&name='.urlencode('INSERT_NAME_HERE') .'&description='.urlencode('INSERT_DESCRIPTION_HERE') .'" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:'.$ssb_artificial['width_button_tumblr'].'px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_1.png\') top left no-repeat transparent;">Share on Tumblr</a></li>';
+		$ssb_html.='<li class="ssb_tublr" style="width:'.$width_array['width_button_tumblr'].'px"><a href="http://www.tumblr.com/share/link?url='.urlencode($url_to_share) .'&name='.urlencode('INSERT_NAME_HERE') .'&description='.urlencode('INSERT_DESCRIPTION_HERE') .'" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:'.$width_array['width_button_tumblr'].'px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_1.png\') top left no-repeat transparent;">Share on Tumblr</a></li>';
 		wp_enqueue_script( 'tumblr_script' );
 	}
 	if(isset($ssb_artificial['show_button_linkedin']))
 	{
-		$ssb_html.='<li class="ssb_linkedin" style="width:'.$ssb_artificial['width_button_linkedin'].'px"><script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script><script type="IN/Share" data-url="'.$url_to_share.'" data-counter="right"></script></li>';
+		$ssb_html.='<li class="ssb_linkedin" style="width:'.$width_array['width_button_linkedin'].'px"><script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script><script type="IN/Share" data-url="'.$url_to_share.'" data-counter="right"></script></li>';
 	}
 
 		if(isset($ssb_artificial['show_button_scoopit']))
 	{
-		$ssb_html.='<li class="ssb_scoopit" style="width:'.$ssb_artificial['width_button_scoopit'].'px"><a href="http://www.scoop.it" class="scoopit-button" scit-position="horizontal" scit-url="'.$url_to_share.'" >&nbsp;</a><script type="text/javascript" src="http://www.scoop.it/button/scit.js"></script>
+		$ssb_html.='<li class="ssb_scoopit" style="width:'.$width_array['width_button_scoopit'].'px"><a href="http://www.scoop.it" class="scoopit-button" scit-position="horizontal" scit-url="'.$url_to_share.'" >&nbsp;</a><script type="text/javascript" src="http://www.scoop.it/button/scit.js"></script>
 		</li>';
 	}
 
@@ -176,7 +181,7 @@ if(isset($ssb_artificial['show_button_xing']))
 	{
 
 
-	$ssb_html.='<li class="ssb_xing" style="width:'.$ssb_artificial['width_button_xing'].'px"><div data-type="XING/Share" data-counter="right"   style="width:'.$ssb_artificial['width_button_xing'].'px" data-url="'.$url_to_share.'"></div>
+	$ssb_html.='<li class="ssb_xing" style="width:'.$width_array['width_button_xing'].'px"><div data-type="XING/Share" data-counter="right"   style="width:'.$width_array['width_button_xing'].'px" data-url="'.$url_to_share.'"></div>
 <script>
   ;(function (d, s) {
     var x = d.createElement(s),
