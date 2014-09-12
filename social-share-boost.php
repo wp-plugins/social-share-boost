@@ -3,7 +3,7 @@
 Plugin URI: http://sumome.com/
 Description: Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode.
 Version: 4.0
-Author: Vasu Chawla
+Author: AppSumo
 Author URI: http://AppSumo.com/
 License: GPLv2 or later
 */

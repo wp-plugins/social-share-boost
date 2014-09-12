@@ -39,12 +39,6 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 * Xing
 * ScoopIt
 
-= Suggestions =
-
-Please mail me your suggestions at admin@syntatical.com
-For custom builds or help, please mail me at same or visit:
-http://www.syntatical.com
-http://www.vasuchawla.com
 
 == Screenshots ==
 1. Social Share Boost buttons output in post/page
