@@ -1,7 +1,6 @@
 === Social Share Boost ===
-Contributors: vchawla26
+Contributors: SumoMe
 Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F6UKBGTQ4YTZG
 Requires at least: 2.5
 Tested up to: 3.9.1
 Stable tag: 4.1
@@ -42,10 +41,7 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 = Suggestions =
 
-Please mail me your suggestions at admin@syntatical.com
-For custom builds or help, please mail me at same or visit:
-http://www.syntatical.com
-http://www.vasuchawla.com
+http://sumome.com
 
 == Screenshots ==
 1. Social Share Boost buttons output in post/page
