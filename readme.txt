@@ -11,7 +11,7 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 == Description == 
 
-[Get even more sharing at  url=http://www.SumoMe.com/?src=ssb]
+[Get even more sharing at SumoMe.com url=http://www.SumoMe.com/?src=ssb]
 
 *new: 
 * More Buttons
