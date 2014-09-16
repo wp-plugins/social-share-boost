@@ -1,6 +1,6 @@
 === Social Share Boost ===
 Contributors: SumoMe
-Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO
+Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO, addthis, sharethis
 Requires at least: 2.5
 Tested up to: 3.9.1
 Stable tag: 4.1
@@ -11,10 +11,12 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 == Description ==
 
+[Get even more sharing at  url=http://www.SumoMe.com/?src=ssb]
+
 *new: 
-More Buttons
-More Widgets
-More customizable
+* More Buttons
+* More Widgets
+* More customizable
 
 Boost Your Social Sharing by automatically adding various social share tools above or below the posts, page and excerpts. This plug-in also provides the functionality to show the social tools using a simple shortcode or a widget. Expected to support more sharing options and more customizable widget in coming versions.
 
@@ -64,8 +66,7 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 = I am going to provide you help related to the plugin =
 
-Sure, Definitely :)
-Just go to my site http://vasuchawla.com or http://www.syntatical.com and fill the contact form
+http://SumoMe.com for any updates to the plugin
 
 == Upgrade Notice ==
 Now, Supports many buttons and more stability.
