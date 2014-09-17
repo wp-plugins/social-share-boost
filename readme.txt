@@ -41,6 +41,7 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 * Xing
 * ScoopIt
 
+[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=ssb)
 
 == Screenshots ==
 1. Social Share Boost buttons output in post/page
