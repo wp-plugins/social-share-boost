@@ -3,7 +3,7 @@ Contributors: SumoMe
 Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO, addthis, sharethis
 Requires at least: 2.5
 Tested up to: 3.9.1
-Stable tag: 4.1
+Stable tag: 4.2
 License: GPLv2 or later
 
 
@@ -57,7 +57,7 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 = How to use =
 
-1. Social Share Boost is available from the WordPress menu 'Syntatical'.
+1. Social Share Boost is available from the WordPress menu ‘SSB’.
 2. The options are distributed into various categories
 3. Just set those easy options and save and the plugin is ready to work
 4. For help or support, just click on support link under the plugin name in the plugins page. And i don't mind if you want to support development via donate link.

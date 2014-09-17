@@ -32,9 +32,6 @@ if(!function_exists('syntatical_contents'))
 
 				 
 				<div class="row">
-
-					<ul><li style="float:left;display:inline-block;padding-right:20px;"><iframe src="//www.facebook.com/plugins/follow.php?href=https%3A%2F%2Fwww.facebook.com%2Fvasuchawla26&amp;width=100&amp;height=80&amp;colorscheme=light&amp;layout=button&amp;show_faces=true&amp;appId=307091639398582" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:22px;width:80px" allowTransparency="true"></iframe></li><li style="float:left;display:inline-block;padding-right:20px;"><div class="g-follow" data-annotation="none" data-height="20" data-href="//plus.google.com/u/0/105910197271343053773" data-rel="author"></div><script type="text/javascript">(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/platform.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script></li><li style="float:left;display:inline-block;padding-right:20px;"><a href="https://twitter.com/VasuChawla" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @vasuchawla</a></li><li style="float:left;display:inline-block;padding-right:20px;"><a href="https://twitter.com/syntatical" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @syntatical</a></li></ul>
-
 				</div>
 				<div class="row"> &nbsp;<br /></div>
 			</div>
@@ -88,7 +85,7 @@ if(!function_exists('syntatical_get_fields_html')){
 		   $class = 'style="display:none;"';
 
 		$html.= '<div class="wp-tab-panela" id="tab'.$i.'" '.$class.' >
-			<div style="margin: 5px 0 15px;" class="coffe_box"><p><a style="text-decoration:none;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=F6UKBGTQ4YTZG" target="_blank">Support Creativity ! Buy me a coffee =)</a> | <a style="text-decoration:none;" href="http://www.vasuchawla.com" target="_blank">Need Help ? or suggest me my next plugin</a></p></div>
+			<div style="margin: 5px 0 15px;" class="coffe_box"><p><a style="text-decoration:none;" href="http://sumome.com/?src=ssb" target="_blank">Get more free tools to increase your sharing at SumoMe.com</p></div>
 		<table class="form-table">';
 
 		foreach ($field_ary as $field) {
