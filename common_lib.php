@@ -3,7 +3,7 @@
 add_action('admin_menu', 'syntatical_settings_menu');
 if(!function_exists('syntatical_settings_menu'))
 {
-	function syntatical_settings_menu(){add_menu_page('Syntatical', 'Syntatical', 'administrator', 'syntatical_plugins', 'syntatical_contents');
+	function syntatical_settings_menu(){add_menu_page('S.S. Boost', 'S.S. Boost', 'administrator', 'syntatical_plugins', 'syntatical_contents');
 	add_submenu_page( 'syntatical_plugins',  'Syntatical Plugins Dashboard','Dashboard', 'administrator', 'syntatical_plugins', 'syntatical_contents' );
 }
 
@@ -20,11 +20,11 @@ if(!function_exists('syntatical_contents'))
 			<div class="inside">
 				<style>.has_ifr iframe{vertical-align: bottom;}</style>
 				<div class="row has_ifr">
+					<h4><a target="_blank" href="http://sumome.com/app/share/?src=ssb">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4><br /><br />
+				
 					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />
-					<h4><a target="_blank" href="http://sumome.com/app/scroll-box/?src=ssb">Scroll Box</a> - Double your daily email list growth</h4><br /><br />
-					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />
-					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />				
-	
+					<h4><a target="_blank" href="http://sumome.com/app/scroll-box/?src=ssb">Scroll Box</a> - Ask for an email address at the right time</h4><br /><br />
+		
 				</div>
 			</div>
 		</div>

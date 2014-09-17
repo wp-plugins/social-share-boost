@@ -55,7 +55,7 @@ if(!function_exists('ssb_settings_menu'))
 {
 	function ssb_settings_menu(){
 
-	add_submenu_page( 'syntatical_plugins', 'Social Share Boost Settings', 'S.S. Boost', 'administrator', 'ssb_settings', 'ssb_settings_content' );
+	add_submenu_page( 'syntatical_plugins', 'Social Share Boost Settings', 'Settings', 'administrator', 'ssb_settings', 'ssb_settings_content' );
 	}
 }
 if(!function_exists('ssb_settings_content'))
