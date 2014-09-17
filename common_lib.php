@@ -14,42 +14,22 @@ if(!function_exists('syntatical_contents'))
 	function syntatical_contents(){
 		?>
 	<div class="wrap">
-		<h2>Syntatical Plugins</h2>
+		<h2>Plugins by SumoMe</h2>
 		<div class="postbox">
-			<h3 class="hndle" style="padding: 7px;  font-size: 15px;"><span>Installed Syntatical Plugin:</span></h3>
+			<h3 class="hndle" style="padding: 7px;  font-size: 15px;"><span>Plugins to help your blog:</span></h3>
 			<div class="inside">
 				<style>.has_ifr iframe{vertical-align: bottom;}</style>
 				<div class="row has_ifr">
-					<?php if(function_exists('ssb_is_installed')){ ?>
-					<h4>Social Share Boost</h4><a href="<?php echo admin_url( 'admin.php?page=ssb_settings', 'http' );?>">Settings</a><br /><br />Liked it? Why not share this plugin: <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://wordpress.org/plugins/social-share-boost/" data-text="Awesome social sharing plugin for wordpress @VasuChawla" data-via="syntatical" data-hashtags="Wordpress">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-					<?php } ?>
-
-					<?php 
-					if(function_exists('syntatical_second_plug')){
-						$d = array();
-						$d[] = syntatical_second_plug();
-						if(function_exists('syntatical_third_plug')){$d[] = syntatical_third_plug();}
-						foreach($d as $plug_data){
-
-						echo '<h4>'.$plug_data['title'].'</h4>';
-						echo '<a href="'.admin_url( $plug_data['settings_url'], 'http' ).'">Settings</a><br /><br />Liked it? Why not share this plugin: <a href="https://twitter.com/share" class="twitter-share-button" data-url="'.$plug_data['share_url'].'" data-text="'.$plug_data['share_text'].'" data-via="syntatical" data-hashtags="Wordpress">Tweet</a>';
-						}
-				}
-					?>
-
+					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />
+					<h4><a target="_blank" href="http://sumome.com/app/scroll-box/?src=ssb">Scroll Box</a> - Double your daily email list growth</h4><br /><br />
+					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />
+					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />				
+	
 				</div>
 			</div>
 		</div>
 
-		<div class="postbox">
-			<h3 class="hndle" style="padding: 7px;  font-size: 15px;"><span>Support / Connect With Developer:</span></h3>
-			<div class="inside">
-				<div class="row">
-					<a style="text-decoration:none;" href="http://vasuchawla.com" target="_blank">My Portfolio</a><br />
-					<a style="text-decoration:none;" href="http://syntatical.com" target="_blank">My Blog</a><br />
-					<a style="text-decoration:none;" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=F6UKBGTQ4YTZG" target="_blank">Support Creativity ! Buy me a coffee =)</a><br />
-				</div>
+
 				 
 				<div class="row">
 
