@@ -2,7 +2,7 @@
 Contributors: SumoMe
 Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO, addthis, sharethis
 Requires at least: 2.5
-Tested up to: 3.9.1
+Tested up to: 4.2
 Stable tag: 4.2
 License: GPLv2 or later
 
