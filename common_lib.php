@@ -20,10 +20,20 @@ if(!function_exists('syntatical_contents'))
 			<div class="inside">
 				<style>.has_ifr iframe{vertical-align: bottom;}</style>
 				<div class="row has_ifr">
-					<h4><a target="_blank" href="http://sumome.com/app/share/?src=ssb">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4><br /><br />
+<? 
+
+	if ( current_user_can('install_plugins') )
+                    $url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=sumome'), 'install-plugin_sumome');
+
+?>
+						
+	<h2><a href="<? $url ?>">Install SumoMe to get the best free tool for WordPress.org sites</h2>
+
+						
+				<!--	<h4><a target="_blank" href="http://sumome.com/app/share/?src=ssb">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4><br /><br />
 				
 					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />
-					<h4><a target="_blank" href="http://sumome.com/app/scroll-box/?src=ssb">Scroll Box</a> - Ask for an email address at the right time</h4><br /><br />
+					<h4><a target="_blank" href="http://sumome.com/app/scroll-box/?src=ssb">Scroll Box</a> - Ask for an email address at the right time</h4><br /><br /> -->
 		
 				</div>
 			</div>

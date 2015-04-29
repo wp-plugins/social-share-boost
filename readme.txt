@@ -11,7 +11,7 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 == Description ==
 
-[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=ssb)
+[**Get super optimized sharing tools with the SumoMe plugin**](https://wordpress.org/plugins/sumome/)
 
 *new: 
 * More Buttons
@@ -41,7 +41,7 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 * Xing
 * ScoopIt
 
-[**Get even more sharing tools at SumoMe.com**](http://www.SumoMe.com/?src=ssb)
+[**Get super optimized sharing tools with the SumoMe plugin**](https://wordpress.org/plugins/sumome/)
 
 
 == Screenshots ==
