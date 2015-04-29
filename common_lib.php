@@ -24,7 +24,8 @@ if(!function_exists('syntatical_contents'))
 	<?php if ( current_user_can('install_plugins') ) { ?>
 					           <?php $url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=sumome'), 'install-plugin_sumome'); ?>
 					           <div class="inside">
-					             <a href="<?=$url?>" class="button-primary">Install SumoMe, tools to grow your WordPress traffic!</a>
+					<a href="<?php echo $url?>" class="button-primary"> 
+						Install SumoMe, tools to grow your WordPress traffic!</a>
 					           </div>
 	 <?php } ?>
 						
