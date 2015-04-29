@@ -20,16 +20,15 @@ if(!function_exists('syntatical_contents'))
 			<div class="inside">
 				<style>.has_ifr iframe{vertical-align: bottom;}</style>
 				<div class="row has_ifr">
-<? 
-
-	if ( current_user_can('install_plugins') )
-                    $url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=sumome'), 'install-plugin_sumome');
-
-?>
+					
+	<?php if ( current_user_can('install_plugins') ) { ?>
+					           <?php $url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=sumome'), 'install-plugin_sumome'); ?>
+					           <div class="inside">
+					             <a href="<?=$url?>" class="button-primary">Install SumoMe, tools to grow your WordPress traffic!</a>
+					           </div>
+	 <?php } ?>
 						
-	<h2><a href="<? $url ?>">Install SumoMe to get the best free tool for WordPress.org sites</h2>
-
-						
+	
 				<!--	<h4><a target="_blank" href="http://sumome.com/app/share/?src=ssb">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4><br /><br />
 				
 					<h4><a target="_blank" href="http://sumome.com/app/list-builder/?src=ssb">List Builder</a> - Double your daily email list growth</h4><br /><br />
