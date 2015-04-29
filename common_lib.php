@@ -95,7 +95,7 @@ if(!function_exists('syntatical_get_fields_html')){
 		   $class = 'style="display:none;"';
 
 		$html.= '<div class="wp-tab-panela" id="tab'.$i.'" '.$class.' >
-			<div style="margin: 5px 0 15px;" class="coffe_box"><p><a style="text-decoration:none;" href="http://sumome.com/?src=ssb" target="_blank">Get more free tools to increase your sharing at SumoMe.com</p></div>
+			<div style="margin: 5px 0 15px;" class="coffe_box"><p><a style="text-decoration:none;" href="http://wordpress.org/plugins/sumome" target="_blank">Get more free tools to increase your sharing at SumoMe.com</p></div>
 		<table class="form-table">';
 
 		foreach ($field_ary as $field) {
