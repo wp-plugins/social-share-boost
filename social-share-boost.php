@@ -73,7 +73,7 @@ function ssb_plugpage_links( $links,$plugin ) {
 	if($plugin == plugin_basename(__FILE__))
 	{
 		$links[] = '<a href="'.admin_url( 'admin.php?page=ssb_settings', 'http' ).'">Settings</a>';
-		$links[] = '<a style="background: rgb(255, 169, 111);color: #442929;padding: 1px 4px;border-radius: 4px;font-weight: bold;font-size: 0.8em;" href="http://sumome.com/?src=ssb" target="_blank">Get More at SumoMe</a>';
+		$links[] = '<a style="background: rgb(255, 169, 111);color: #442929;padding: 1px 4px;border-radius: 4px;font-weight: bold;font-size: 0.8em;" href="wordpress.org/plugins/sumome/" target="_blank">Upgrade with SumoMe</a>';
 	}
 	return $links;
 }
