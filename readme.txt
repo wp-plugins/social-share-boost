@@ -1,6 +1,6 @@
 === Social Share Boost ===
 Contributors: noahkagan
-Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO, addthis, sharethis
+Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO, addthis, sharethis, sharebar, pinterest, sharing widget, easy sharing, social buttons
 Requires at least: 2.5
 Tested up to: 4.2
 Stable tag: 4.3
