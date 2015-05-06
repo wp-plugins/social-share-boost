@@ -1,5 +1,5 @@
 === Social Share Boost ===
-Contributors: SumoMe
+Contributors: noahkagan
 Tags: social, share, share buttons, social boost, social share, facebook, twitter, google plus, sharing, SEO, addthis, sharethis
 Requires at least: 2.5
 Tested up to: 4.2
