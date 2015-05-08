@@ -66,7 +66,6 @@ Boost Your Social Sharing by automatically adding various social share tools abo
 
 == Frequently Asked Questions ==
 
-http://SumoMe.com for any updates to the plugin
 
 == Upgrade Notice ==
 Now, Supports many buttons and more stability.
