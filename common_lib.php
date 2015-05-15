@@ -14,20 +14,17 @@ if(!function_exists('syntatical_contents'))
 	function syntatical_contents(){
 		?>
 	<div class="wrap">
-		<h2>Plugins by SumoMe</h2>
+		<h2>The Dashboard</h2>
 		<div class="postbox">
-			<h3 class="hndle" style="padding: 7px;  font-size: 15px;"><span>Plugins to help your blog:</span></h3>
+			<h3 class="hndle" style="padding: 7px;  font-size: 15px;"><span>Things for you:</span></h3>
 			<div class="inside">
 				<style>.has_ifr iframe{vertical-align: bottom;}</style>
 				<div class="row has_ifr">
-					
-	<?php if ( current_user_can('install_plugins') ) { ?>
-					           <?php $url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=sumome'), 'install-plugin_sumome'); ?>
-					           <div class="inside">
-					<a href="<?php echo $url?>" class="button-primary"> 
-						Install SumoMe, tools to grow your WordPress traffic!</a>
-					           </div>
-	 <?php } ?>
+					<ul>
+						<li>1- Check out our  <a target="_blank" href="https://wordpress.org/plugins/sumome">SumoMe Plugin</a> (tools to grow your site!)</li>
+						<li>2- <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/social-share-boost">Leave a :) review</a></li>
+						<li>3- Install our  <a target="_blank" href="https://wordpress.org/plugins/google-analyticator/">Google Analytics Plugin</a></li>
+					</ul>
 						
 	
 				<!--	<h4><a target="_blank" href="http://sumome.com/app/share/?src=ssb">Share</a> - Get more traffic to your site with these super easy to setup share buttons!</h4><br /><br />
